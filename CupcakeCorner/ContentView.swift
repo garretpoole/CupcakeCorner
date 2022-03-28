@@ -10,16 +10,21 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        //SwiftUI doesnt know the size of the image coming from the internet
-        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")){ image in
-            image
-                .resizable()
-                .scaledToFit()
-        } placeholder: {
-            ProgressView()
+        //3 phases when loading an image and can do something for each one
+        AsyncImage(url: URL(string: "https://hws.dev/img/bad.png")){ phase in
+            //image is loaded
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+            //error laoding the image
+            } else if phase.error != nil{
+                Text("There was an error loading the image")
+            //image is still loading
+            } else{
+                ProgressView()
+            }
         }
-        //resizable() and .frame() cannot apply here to AsyncImage bc Image has yet to download
-        //applies to placeholder view
         .frame(width: 200, height: 200)
     }
 }
