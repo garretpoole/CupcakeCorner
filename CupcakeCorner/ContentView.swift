@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State private var username = ""
+    @State private var email = ""
     var body: some View {
-        //3 phases when loading an image and can do something for each one
-        AsyncImage(url: URL(string: "https://hws.dev/img/bad.png")){ phase in
-            //image is loaded
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-            //error laoding the image
-            } else if phase.error != nil{
-                Text("There was an error loading the image")
-            //image is still loading
-            } else{
-                ProgressView()
+        Form {
+            Section {
+                TextField("UserName", text: $username)
+                TextField("Email", text: $email)
             }
+            
+            Section{
+                Button("Create account"){
+                    print("Creating account")
+                }
+            }
+            //can disable this Section until both fields are filled in
+            .disabled(disableForm)
         }
-        .frame(width: 200, height: 200)
+    }
+    
+    var disableForm: Bool{
+        username.count < 5 || email.count < 5
     }
 }
 
