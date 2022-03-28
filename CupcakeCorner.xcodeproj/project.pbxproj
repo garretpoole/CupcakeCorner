@@ -13,6 +13,7 @@
 		605F819527F26A16000AA9AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605F819427F26A16000AA9AA /* Preview Assets.xcassets */; };
 		605F819C27F27729000AA9AA /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F819B27F27729000AA9AA /* Order.swift */; };
 		605F819E27F27A51000AA9AA /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F819D27F27A51000AA9AA /* AddressView.swift */; };
+		605F81A027F27B42000AA9AA /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605F819F27F27B42000AA9AA /* CheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		605F819427F26A16000AA9AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		605F819B27F27729000AA9AA /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		605F819D27F27A51000AA9AA /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		605F819F27F27B42000AA9AA /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 		605F818127F26A14000AA9AA = {
 			isa = PBXGroup;
 			children = (
+				605F819F27F27B42000AA9AA /* CheckoutView.swift */,
 				605F819D27F27A51000AA9AA /* AddressView.swift */,
 				605F819B27F27729000AA9AA /* Order.swift */,
 				605F818C27F26A14000AA9AA /* CupcakeCorner */,
@@ -145,6 +148,7 @@
 			files = (
 				605F819C27F27729000AA9AA /* Order.swift in Sources */,
 				605F819E27F27A51000AA9AA /* AddressView.swift in Sources */,
+				605F81A027F27B42000AA9AA /* CheckoutView.swift in Sources */,
 				605F819027F26A14000AA9AA /* ContentView.swift in Sources */,
 				605F818E27F26A14000AA9AA /* CupcakeCornerApp.swift in Sources */,
 			);
