@@ -7,31 +7,51 @@
 
 import SwiftUI
 
-class User: ObservableObject, Codable{
-    //must tell swift what properties must be loaded and saved
-    //tells to save the name property
-    enum CodingKeys: CodingKey{
-        case name
-    }
-    @Published var name = "Tide Poole"
-    //general Decoder contains all of our data; up to us on how to read it
-    //'required' means anyone sublclassing User class must override init with custom data (can make it a 'final class' as well)
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        //looks for String in '.name' in our CodingKeys
-        name = try container.decode(String.self, forKey: .name)
-    }
-    //for writing out the data
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-    }
+struct Response: Codable{
+    var results: [Result]
+}
+
+struct Result: Codable{
+    var trackId: Int
+    var trackName: String
+    var collectionName: String
 }
 
 struct ContentView: View {
+    @State private var results = [Result]()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(results, id: \.trackId){ item in
+            VStack(alignment: .leading) {
+                Text(item.trackName)
+                    .font(.headline)
+                Text(item.collectionName)
+            }
+        }
+        .task{
+            //'await' must be used for async functions
+            await loadData()
+        }
+    }
+    //downloads codable data
+    func loadData() async{
+        //structure for apple api
+        guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song")
+        else{
+            print("Invalid URL")
+            return
+        }
+        
+        do{
+            //return is a tuple with data and metadata
+            let (data, _) = try await URLSession.shared.data(from: url)
+            //convert data object into Response
+            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data){
+                results = decodedResponse.results
+            }
+        } catch{
+            print("Invalid data")
+        }
     }
 }
 
