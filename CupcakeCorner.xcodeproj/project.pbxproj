@@ -41,9 +41,6 @@
 		605F818127F26A14000AA9AA = {
 			isa = PBXGroup;
 			children = (
-				605F819F27F27B42000AA9AA /* CheckoutView.swift */,
-				605F819D27F27A51000AA9AA /* AddressView.swift */,
-				605F819B27F27729000AA9AA /* Order.swift */,
 				605F818C27F26A14000AA9AA /* CupcakeCorner */,
 				605F818B27F26A14000AA9AA /* Products */,
 			);
@@ -60,6 +57,9 @@
 		605F818C27F26A14000AA9AA /* CupcakeCorner */ = {
 			isa = PBXGroup;
 			children = (
+				605F819B27F27729000AA9AA /* Order.swift */,
+				605F819F27F27B42000AA9AA /* CheckoutView.swift */,
+				605F819D27F27A51000AA9AA /* AddressView.swift */,
 				605F818D27F26A14000AA9AA /* CupcakeCornerApp.swift */,
 				605F818F27F26A14000AA9AA /* ContentView.swift */,
 				605F819127F26A16000AA9AA /* Assets.xcassets */,
