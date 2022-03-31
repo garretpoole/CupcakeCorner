@@ -11,6 +11,8 @@ struct CheckoutView: View {
     @ObservedObject var order: Order
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var showingFailure = false
+    
     var body: some View {
         ScrollView{
             VStack{
@@ -43,6 +45,12 @@ struct CheckoutView: View {
         } message: {
             Text(confirmationMessage)
         }
+        //comment out request.httpMethod to test
+        .alert("Checkout Failed!", isPresented: $showingFailure){
+            Button("OK") {}
+        } message: {
+            Text("Check internet connection and try again")
+        }
     }
     
     func placeOrder() async {
@@ -64,6 +72,7 @@ struct CheckoutView: View {
             showingConfirmation = true
         } catch{
             print("Checkout Failed")
+            showingFailure = true
         }
     }
 }
