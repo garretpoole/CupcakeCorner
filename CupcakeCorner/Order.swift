@@ -35,7 +35,7 @@ struct OrderStruct: Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Funfetti"]
     //using index is bad idea for mutable arrays as the array can change overtime
     var type = 0
-    var quantity 3
+    var quantity = 3
     
     var specialRequestEnabled = false {
         didSet {
